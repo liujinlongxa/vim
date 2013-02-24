@@ -1,0 +1,5 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =3
+let g:netrw_dirhist_1='/host/Files/www/rb/rails/depot305/app'
+let g:netrw_dirhist_2='/host/Files/.vim/snippets'
+let g:netrw_dirhist_3='/host/Files/mysite/wiki/code/algo/search'
