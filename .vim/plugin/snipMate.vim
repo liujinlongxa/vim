@@ -101,16 +101,14 @@ fun! GetSnippets(dir, filetypes)
 	for ft in split(a:filetypes, '\.')
 		if has_key(g:did_ft, ft) | continue | endif
 		call s:DefineSnips(a:dir, ft, ft)
-		if ft == 'c'
-			call s:DefineSnips(a:dir, 'cpp', ft)
+		if ft == 'cpp'
+			call s:DefineSnips(a:dir, 'c', ft)
 		elseif ft == 'ruby'
 			call s:DefineSnips(a:dir, 'rails', ft)
 		elseif ft == 'eruby'
 			call s:DefineSnips(a:dir, 'html', ft)
 		elseif ft == 'mkd'
 			call s:DefineSnips(a:dir, 'html', ft)
-		elseif ft == 'html'
-			call s:DefineSnips(a:dir, 'javascript', ft)
 		endif
 		let g:did_ft[ft] = 1
 	endfor
