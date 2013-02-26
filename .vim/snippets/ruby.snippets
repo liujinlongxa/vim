@@ -1,5 +1,3 @@
-snippet #       添加编码信息
-	# encoding: utf-8${1}
 snippet -       分隔注释
 	# -------------------------------${1}
 snippet =b      嵌入式文档（多行注释）
@@ -41,10 +39,12 @@ snippet %       等同于%Q
 	%{${1}}
 snippet w       字符串数组
 	%w{${1}}
-snippet x       相当与``，用于执行操作系统命令
+snippet x       相当于``，用于执行操作系统命令
 	%x{${1}}
 snippet r       正则
 	%r{${1}}
+snippet i       符号数组 [2.x新增]
+	%i{${1}}
 snippet doc     多行字符串
 	<<${1:HEREDOC}
 	${2}
@@ -146,6 +146,8 @@ snippet dw      downto
 	downto(${1})
 snippet toa     转成数组
 	to_a${1}
+snippet toh     转换成Hash [2.x新增]
+	to_h${1}
 snippet toi     转成整数
 	to_i${1}
 snippet tof     转成浮点数
@@ -348,6 +350,8 @@ snippet _e      文件结束
 	__END__${1}
 snippet _l      当前代码行号
 	__LINE__${1}
+snippet _d      文件所在文件夹的名字 [2.x新增]
+	__dir__${1}
 snippet _f      当前文件名
 	__FILE__${1}
 snippet _en     当前文件编码

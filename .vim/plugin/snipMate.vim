@@ -101,9 +101,7 @@ fun! GetSnippets(dir, filetypes)
 	for ft in split(a:filetypes, '\.')
 		if has_key(g:did_ft, ft) | continue | endif
 		call s:DefineSnips(a:dir, ft, ft)
-		if ft == 'cpp'
-			call s:DefineSnips(a:dir, 'c', ft)
-		elseif ft == 'ruby'
+		if ft == 'ruby'
 			call s:DefineSnips(a:dir, 'rails', ft)
 		elseif ft == 'eruby'
 			call s:DefineSnips(a:dir, 'html', ft)
