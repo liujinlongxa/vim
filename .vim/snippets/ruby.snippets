@@ -31,9 +31,9 @@ snippet cl      类定义
 
 	end  # class
 # 字符串、代码块
-snippet q       相当于单引号字符串
+snippet q       单引号字符串字面量
 	%q{${1}}
-snippet Q       相当于双引号字符串
+snippet Q       双引号字符串字面量
 	%Q{${1}}
 snippet %       等同于%Q
 	%{${1}}
@@ -41,9 +41,11 @@ snippet w       字符串数组
 	%w{${1}}
 snippet x       相当于``，用于执行操作系统命令
 	%x{${1}}
-snippet r       正则
+snippet r       正则字面量
 	%r{${1}}
-snippet i       符号数组 [2.x新增]
+snippet s       Symbol字面量
+	%s{${1}}
+snippet i       Symbol数组 [2.x新增]
 	%i{${1}}
 snippet doc     多行字符串
 	<<${1:HEREDOC}
@@ -144,6 +146,8 @@ snippet up      upto
 	upto(${1})
 snippet dw      downto
 	downto(${1})
+snippet bet     是否位于...之间
+	between?${1}
 snippet toa     转成数组
 	to_a${1}
 snippet toh     转换成Hash [2.x新增]
@@ -154,8 +158,10 @@ snippet tof     转成浮点数
 	to_f${1}
 snippet tos     转成字符串
 	to_s${1}
-snippet ins     等同于to_s
+snippet ins     等同于to_s（常用于调试）
 	inspect${1}
+snippet tosy    将String转换成Symbol
+	to_sym${1}
 snippet toe     to_enum
 	to_enum${1}
 snippet enf     enum_for
@@ -215,8 +221,6 @@ snippet mi      min
 snippet mib     min_by
 	min_by ${1}
 # 反射
-snippet rest    是否有这个方法
-	respond_to? :${1}
 snippet inmo    获取包含的类
 	included_modules${1}
 snippet me      对象的方法
@@ -225,14 +229,8 @@ snippet glv     全局变量
 	global_variables${1}
 snippet lov     局部变量
 	local_variables${1}
-snippet cons    类/Module的常量
-	constants${1}
-snippet cog     获取常量值
-	const_get${1}
-snippet cos     设置常量值
-	const_set${1}
-snippet rec     删除常量值
-	remove_const${1}
+snippet clv     类变量
+	class_variables${1}
 snippet recv    删除类变量
 	remove_class_variables${1}
 snippet reme    删除类方法
@@ -241,30 +239,26 @@ snippet udme    解除类方法定义
 	undef_method${1}
 snippet dfme    定义方法
 	define_method(${1})
-snippet clv     类变量
-	class_variables${1}
-snippet clvg    获取类变量值
-	class_variable_get${1}
-snippet clvs    设置类变量值
-	class_variable_set${1}
-snippet inme    类/Module的方法
+snippet insme   类/模块的方法
 	instance_methods${1}
-snippet inv     实例变量
+snippet insv    实例变量
 	instance_variables${1}
-snippet invg    获取实例变量值
-	instance_variable_get${1}
-snippet invs    设置实例变量值
-	instance_variable_set${1}
-snippet invd    判断实例变量是否已定义
-	instance_variable_defined?${1}
-snippet ino     是否是实例变量
-	instance_of?${1}
-snippet inex
-	instance_exec${1}
-snippet ine     在对象上下文解释字符串
+snippet insvd   判断实例变量是否已定义
+	instance_variable_defined? ${1}
+snippet inse    在对象上下文解释字符串
 	instance_eval${1}
 snippet cle     在类上下文解释字符串
 	class_eval${1}
+snippet inso    是否是类本身的实例（可用==代替）
+	instance_of? ${1}
+snippet isa     是否是类某个子类的实例（可用===代替）
+	is_a? ${1}
+snippet rest    是否有这个方法
+	respond_to? :${1}
+snippet fre     冻结一个对象
+	freeze${1}
+snippet fro     对象是否已冻结
+	frozen?${1}
 # 字符串相关
 snippet cap     首字母大写
 	capitalize${1}
@@ -316,7 +310,7 @@ snippet alme    方法别名
 	alias_method${1}
 snippet ev      字符串求值
 	eval(${1})
-snippet le      返回字符数或长度
+snippet len     返回字符数或长度
 	length${1}
 snippet sz      size（等同于length）
 	size${1}
@@ -326,8 +320,6 @@ snippet en      返回字符串的编码方式
 	encoding${1}
 snippet oid     对象ID
 	object_id${1}
-snippet s       self
-	self${1}
 snippet g       获取输入
 	gets${1}
 snippet p       输出（自动换行）
@@ -346,18 +338,24 @@ snippet |       | .. |
 	|${1}| ${2}
 snippet _       __NAME__
 	__${1:LINE}__
+snippet _i      object_id
+	__id__${1}
 snippet _e      文件结束
 	__END__${1}
 snippet _l      当前代码行号
 	__LINE__${1}
-snippet _d      文件所在文件夹的名字 [2.x新增]
+snippet _d      文件所在路径，不含文件名 [2.x新增]
 	__dir__${1}
-snippet _f      当前文件名
+snippet _f      当前文件名（__dir__ + '/' + __FILE__ 就是完整的路径了）
 	__FILE__${1}
 snippet _en     当前文件编码
 	__ENCODING__${1}
-snippet .       =>
+snippet <       { ... }
+	{ ${1} }
+snippet >       =>
 	=> ${1}
+snippet .       self
+	self${1}
 # 常用模块
 snippet Enu     迭代器
 	Enumerable${1}

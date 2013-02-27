@@ -1,7 +1,7 @@
 " -----------------   Author: Ruchee
 " -----------------    Email: my@ruchee.com
 " -----------------  WebSite: http://www.ruchee.com
-" -----------------     Date: 2013-02-25
+" -----------------     Date: 2013-02-27
 " -----------------           For Linux and Cygwin
 
 
@@ -9,8 +9,8 @@
 " Ctrl + J                   --光标移下一行行首       [插入模式]
 " Ctrl + K                   --光标移上一行行尾       [插入模式]
 " Ctrl + L                   --光标移当前行行尾       [插入模式]
-" Ctrl + C                   --单源文件编译           [已配置 Coffee]
-" Ctrl + R                   --单源文件运行           [已配置 Rb Coffee Bash]
+" Ctrl + C                   --单源文件编译           [已配置 C Coffee]
+" Ctrl + R                   --单源文件运行           [已配置 C Rb Coffee Bash]
 " Ctrl + ]                   --转到函数定义
 " Ctrl + T                   --返回调用函数
 " Ctrl + E                   --一步加载语法模板和作者、时间信息
@@ -113,7 +113,7 @@ filetype plugin on           " 针对不同的文件类型加载对应的插件
 filetype plugin indent on    " 启用自动补全
 
 " 每行超过80个的字符用下划线标示
-au BufRead,BufNewFile *.rb,*.js,*.coffee,*.sh,*.sql,*.vim,*.css,*.html 2match Underlined /.\%81v/
+au BufRead,BufNewFile *.c,*.h,*.rb,*.coffee,*.sh,*.sql,*.vim,*.js,*.css,*.html 2match Underlined /.\%81v/
 
 
 " 设置编码
@@ -216,7 +216,9 @@ map tl :Tlist<CR><c-l>
 " 编译源文件
 func! CompileCode()
   exec "w"
-  if &filetype == "ruby"
+  if &filetype == "c"
+    exec "!gcc -Wall -std=c99 %<.c -o %<"
+  elseif &filetype == "ruby"
     exec "!ruby %<.rb"
   elseif &filetype == "coffee"
     exec "!coffee -c %<.coffee"
@@ -228,7 +230,9 @@ endfunc
 " 运行可执行文件
 func! RunCode()
   exec "w"
-  if &filetype == "ruby"
+  if &filetype == "c"
+    exec "!./%<"
+  elseif &filetype == "ruby"
     exec "!ruby %<.rb"
   elseif &filetype == "coffee"
     exec "!coffee %<.coffee"
@@ -268,4 +272,4 @@ let g:vimwiki_list = [{
 \ 'html_header': '~/mysite/template/header.html',
 \ 'html_footer': '~/mysite/template/footer.html',
 \ 'auto_export': 1,
-\ 'nested_syntaxes': {'Ruby': 'ruby', 'JS': 'javascript', 'Coffee': 'coffee', 'Bash': 'sh', 'SQL': 'sql', 'Vim': 'vim', 'CSS': 'css', 'HTML': 'html', 'XML': 'xml'},}]
+\ 'nested_syntaxes': {'Clang': 'c', 'Ruby': 'ruby', 'Coffee': 'coffee', 'Bash': 'sh', 'SQL': 'sql', 'Vim': 'vim', 'JS': 'javascript', 'CSS': 'css', 'HTML': 'html', 'XML': 'xml'},}]

@@ -1,4 +1,0 @@
-let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =2
-let g:netrw_dirhist_1='/host/Files/www/rb/rails/tutorial/sample_app/spec'
-let g:netrw_dirhist_2='/host/Files/.vim/snippets'
