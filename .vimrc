@@ -4,6 +4,8 @@
 " -----------------     Date: 2013-02-27
 " -----------------           For Linux and Cygwin
 
+set tags+=~/.rvm/gems/tags
+
 
 " Ctrl + H                   --光标移当前行行首       [插入模式]
 " Ctrl + J                   --光标移下一行行首       [插入模式]

@@ -89,16 +89,11 @@ snippet if      if
 	end  # if
 snippet ul      uless（与if相反）
 	unless ${1}
-	  ${2}
-	end  # unless
 snippet elif    elsif
 	elsif ${1}
 	  ${2}
 snippet el      else
 	else
-	  ${1}
-snippet th      then
-	then
 	  ${1}
 snippet fo      for .. in
 	for ${1} in ${2}
@@ -303,7 +298,7 @@ snippet su      super
 snippet sucl    superclass
 	superclass${1}
 snippet df?     检查是否有定义
-	defined?${1}
+	defined? ${1}
 snippet al      别名
 	alias ${1}
 snippet alme    方法别名
