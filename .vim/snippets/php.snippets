@@ -90,7 +90,7 @@ snippet f.      匿名函数（换行）
 snippet ff      匿名函数（不换行）
 	function (${1}) {${2}};
 snippet ffu     带use子句的匿名函数
-	function (${1}) use ${2} {${3}};
+	function (${1}) use (${2}) {${3}};
 snippet abf     用于声明抽象方法
 	abstract function ${1:f_name} (${2});${3}
 snippet fc      构造方法
@@ -105,11 +105,11 @@ snippet fcl     克隆方法
 	function __clone () {
 	  ${1}
 	}
-snippet fts     将类当作字符串打印
+snippet fto     将类当作字符串打印
 	function __toString (${1}) {
 	  ${2}
 	}
-snippet fal     自动加载
+snippet fau     自动加载
 	function __autoload (${1}) {
 	  ${2}
 	}
@@ -174,7 +174,7 @@ snippet def     default
 	default:
 	  ${1}
 # 异常处理
-snippet th      抛出异常
+snippet thr     抛出异常
 	throw new ${1:Exception} (${2});
 snippet try     包围代码块
 	try {
@@ -188,6 +188,22 @@ snippet fin     善后处理
 	finally {
 	  ${1}
 	}
+snippet E       Exception
+	Exception${1}
+snippet gmsg    获取消息字符串
+	getMessage()${1}
+snippet gcode   获取错误代码
+	getCode()${1}
+snippet gfile   获取产生异常的文件
+	getFile()${1}
+snippet gline   获取产生异常的行号
+	getLine()${1}
+snippet gpre    获取一个嵌套的异常对象
+	getPrevious()${1}
+snippet gtra    获取一个异常数据的多维数组
+	getTrace()${1}
+snippet gtraas  获取异常数据的字符串版本
+	getTraceAsString()${1}
 # 输入输出
 snippet e       输出
 	echo ${1};
@@ -262,6 +278,12 @@ snippet ex      结束
 	exit(${1});
 snippet ins     检查对象是否是指定类的实例
 	instanceof ${1}
+snippet _       __XXX__
+	__${1}__
+snippet _f      __FILE__
+	__FILE__${1}
+snippet _l      __LINE__
+	__LINE__${1}
 snippet s       self::
 	self::${1}
 snippet >       =>
