@@ -103,6 +103,8 @@ fun! GetSnippets(dir, filetypes)
 		call s:DefineSnips(a:dir, ft, ft)
 		if ft == 'php'
 			call s:DefineSnips(a:dir, 'html', ft)
+		elseif ft == 'twig'
+			call s:DefineSnips(a:dir, 'html', ft)
 		elseif ft == 'ruby'
 			call s:DefineSnips(a:dir, 'rails', ft)
 		elseif ft == 'eruby'

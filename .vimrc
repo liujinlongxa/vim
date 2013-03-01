@@ -1,7 +1,7 @@
 " -----------------   Author: Ruchee
 " -----------------    Email: my@ruchee.com
 " -----------------  WebSite: http://www.ruchee.com
-" -----------------     Date: 2013-02-28
+" -----------------     Date: 2013-03-01
 " -----------------           For Linux and Cygwin
 
 set tags+=~/.rvm/gems/tags
@@ -75,8 +75,11 @@ set tags+=~/.rvm/gems/tags
 " q                          --退出该插件
 
 
-colorscheme elflord          " 着色模式：黄色和粉红色为主
-set guifont=Monaco:h11       " 字体 && 字号
+colorscheme blackboard       " 蓝色着色模式
+"colorscheme molokai         " Sublime Text着色模式
+"colorscheme ubloh           " 突出注释的艳丽着色模式
+"colorscheme elflord         " 着色模式：黄色和粉红色为主
+set guifont=Monaco\ 11       " 字体 && 字号
 set backspace=2              " 设置退格键可用
 set autoindent               " 自动对齐
 set ai!                      " 设置自动缩进
@@ -121,6 +124,19 @@ au BufRead,BufNewFile *.c,*.h,*.php,*.rb,*.coffee,*.sh,*.sql,*.vim,*.js,*.css,*.
 set fenc=utf-8
 set encoding=utf-8
 set fileencodings=utf-8,gbk,cp936,latin-1
+
+
+if has("gui_running")
+  au GUIEnter * simalt ~x  " 窗口启动时自动最大化
+  "winpos 20 20            " 指定窗口出现的位置，坐标原点在屏幕左上角
+  "set lines=20 columns=90 " 指定窗口大小，lines为高度，columns为宽度
+  set guioptions-=m        " 隐藏菜单栏
+  set guioptions-=T        " 隐藏工具栏
+  "set guioptions-=L       " 隐藏左侧滚动条
+  "set guioptions-=r       " 隐藏右侧滚动条
+  "set guioptions-=b       " 隐藏底部滚动条
+  "set showtabline=0       " 隐藏Tab栏
+endif
 
 
 " ======= 引号 && 括号自动匹配 ======= "
@@ -218,7 +234,7 @@ map tl :Tlist<CR><c-l>
 func! CompileCode()
   exec "w"
   if &filetype == "c"
-    exec "!gcc -Wall -std=c99 %<.c -o %<"
+    exec "!gcc -Wall -std=c11 %<.c -o %<"
   elseif &filetype == "php"
     exec "!php %<.php"
   elseif &filetype == "ruby"

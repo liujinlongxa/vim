@@ -4,6 +4,14 @@ snippet =b      嵌入式文档（多行注释）
 	=begin
 	${1}
 	=end
+snippet BEGIN    在程序开始时执行（顺序执行）
+	BEGIN {
+	  ${1}
+	}
+snippet END      在程序结束时执行（反序执行）
+	END {
+	  ${1}
+	}
 # 包含指令
 snippet in      包含Module（类包含）
 	include ${1}
