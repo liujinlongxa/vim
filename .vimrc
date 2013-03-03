@@ -254,8 +254,6 @@ func! RunCode()
     exec "!php %<.php"
   elseif &filetype == "ruby"
     exec "!ruby %<.rb"
-  elseif &filetype == "coffee"
-    exec "!coffee %<.coffee"
   elseif &filetype == "sh"
     exec "!bash %<.sh"
   endif

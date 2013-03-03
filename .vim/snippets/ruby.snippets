@@ -1,3 +1,5 @@
+snippet #       文件编码
+	# encoding: utf-8
 snippet -       分隔注释
 	# -------------------------------${1}
 snippet =b      嵌入式文档（多行注释）
@@ -241,6 +243,8 @@ snippet tos     转成字符串
 	to_s${1}
 snippet ins     等同于to_s（常用于调试）
 	inspect${1}
+snippet top     转换成Proc对象
+	to_proc${1}
 snippet tosy    将String转换成Symbol
 	to_sym${1}
 snippet toe     返回一个枚举器

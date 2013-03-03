@@ -22,11 +22,9 @@ snippet doc     跨行文本
 snippet na      命名空间（行语法）
 	namespace ${1};${2}
 snippet na.     命名空间（大括号语法）
-	namespace ${1} {
+	namespace${1} {
 	  ${2}
 	}
-snippet _na     当前命名空间
-	__NAMESPACE__${1}
 snippet u       设置别名
 	use ${1};
 snippet uas     自定义别名
@@ -204,6 +202,15 @@ snippet gtra    获取一个异常数据的多维数组
 	getTrace()${1}
 snippet gtraas  获取异常数据的字符串版本
 	getTraceAsString()${1}
+# 反射
+snippet R       Reflection
+	Reflection${1}
+snippet Rcl     类信息和工具
+	ReflectionClass${1}
+snippet Rme     类方法信息和工具
+	ReflectionMethod${1}
+snippet Rpa     方法参数信息
+	ReflectionParameter${1}
 # 输入输出
 snippet e       输出
 	echo ${1};
@@ -284,6 +291,8 @@ snippet _f      __FILE__
 	__FILE__${1}
 snippet _l      __LINE__
 	__LINE__${1}
+snippet _n      __NAMESPACE__
+	__NAMESPACE__${1}
 snippet s       self::
 	self::${1}
 snippet >       =>
